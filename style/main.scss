@@ -1,0 +1,534 @@
+$body-bg: #242424;
+$nav-bg: #2e2e2e;
+$white-bg: #fff;
+$theme-color: #57c5a0;
+$warn-bg: #f27e4b;
+$content-bg: #ebe7df;
+$favorites-bg: #adadad;
+
+// fonts color
+$main-color: #ebe7df;
+$icon-color: #6e6e6e;
+$nav-color: #aaa;
+$nav-span: #a6a6a6;
+
+$top-head-border: #383838;
+$border-color: #ccc;
+
+// display size
+$wide-screens: 1200px;
+$desktops: 992px;
+$tablet: 768px;
+$phones: 480px;
+
+// media queries
+@mixin wide-screens {
+  @media (max-width: #{$wide-screens}) {
+    @content;
+  }
+}
+@mixin desktops {
+  @media (max-width: #{$desktops}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+@mixin phones {
+  @media (max-width: #{$phones}) {
+    @content;
+  }
+}
+
+@mixin radius($radius...){
+  -moz-border-radius:    $radius;
+  -o-border-radius:      $radius;
+  -webkit-border-radius: $radius;
+  border-radius:         $radius;
+}
+
+
+body {
+  background: $body-bg;
+  padding: 0;
+  margin: 0;
+}
+
+input,
+button {
+  outline: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+header {
+  .top-head{
+    @include tablet {
+      padding: 8px 0;
+    }
+    .logo {
+      margin: 8px 0 0 0;
+      font-size: 26px;
+      text-transform: uppercase;
+      a {
+        color: $theme-color;
+      }
+      @include tablet {
+        font-size: 25px;
+      }
+    }
+    .search {
+      @include radius(3px);
+      padding: 0 8px;
+      margin-top: 8px;
+      width: 150px;
+      @include tablet {
+        margin-top: 30px;
+      }
+    }
+    label {
+      background: url(../images/search.png) center no-repeat;
+      width: 24px;
+      height: 24px;
+      max-width: 24px;
+      margin: 8px 0 0 10px;
+      cursor: pointer;
+      @include tablet {
+        margin: 30px 0 0 10px;
+      }
+    }
+    .login {
+      border-left: 1px solid $top-head-border;
+      border-right: 1px solid $top-head-border;
+      text-align: center;
+      padding: 8px 0 14px;
+      cursor: pointer;
+      &:hover a {
+        color: $white-bg;
+      }
+      @include tablet {
+        display: none;
+      }
+      p {
+        margin: 0;
+        a {
+          color: $nav-color;
+        }
+      }
+    }
+    .login-mob {
+      display: none;
+      @include tablet {
+        display: block;
+        a {
+          display: block;
+          margin-top: 10px;
+          width:25px;
+          height: 25px;
+          background: url(../images/login_hover.png) center no-repeat;
+        }
+      }
+    }
+  }
+}
+
+.top-nav-box {
+  background: $white-bg;
+  border-bottom: 1px solid $border-color;
+  .btn-mobile {
+    display: none;
+    margin-top: 10px;
+    @include tablet {
+      display: block;
+    }
+  }
+}
+
+.top-nav {
+  ul {
+    @include tablet {
+      display: none;
+      background: $white-bg;
+      width: 100%;
+    }
+  }
+  li {
+    float: left;
+    padding: 0 22px;
+    line-height: 50px;
+    @include desktops {
+      padding: 0 10px;
+    }
+    @include tablet {
+      float: none;
+    }
+    a {
+      color: $body-bg;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.favorites,
+.card {
+  width: 50%;
+  line-height: 50px;
+  border-right: 1px solid $border-color;
+  cursor: pointer;
+  @include tablet {
+    border-bottom: 1px solid $border-color;
+  }
+  p {
+    margin: 0;
+    text-align: center;
+    background: url(../images/icons_card.png) center left 20% no-repeat;
+    color: $white-bg;
+  }
+  span {
+    background: $theme-color;
+    padding: 3px 4px;
+    border-radius: 2px;
+  }
+}
+.favorites {
+  border-left: 1px solid $border-color;
+  p {
+    background: url(../images/icons_favorites.png) center left 20% no-repeat;
+  }
+  span {
+    background: $favorites-bg;
+  }
+}
+
+.slider-box {
+  padding: 50px 0;
+  background: $white-bg;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  @include tablet {
+    display: none;
+  }
+  .slider-wrap {
+    width: 100000px;
+    position: relative;
+  }
+  ul {
+    height: 350px;
+  }
+  li {
+    float: left;
+    width: 1400px;
+    @include wide-screens {
+      width: $wide-screens
+    }
+    @include desktops {
+      width: $desktops;
+    }
+    @include tablet {
+      width: $tablet;
+    }
+  }
+  .img-box {
+    width: 40%;
+    margin-left: 10%;
+    float: left;
+  }
+  .description {
+    width: 30%;
+    float: left;
+    text-align: left;
+    @include tablet {
+      width: 50%;
+    }
+    a {
+      color: $body-bg;
+    }
+  }
+}
+
+.price {
+  display: inline-block;
+  padding: 20px 8px;
+  background: $theme-color;
+  color: $white-bg;
+}
+.icons {
+  a {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border: 1px solid $main-color;
+    &:hover {
+      border: 1px solid $border-color;
+    }
+  }
+  .view {
+    background: url(../images/icons_view.png) center no-repeat;
+  }
+  .favorites {
+    background: url(../images/icons_favorites.png) center no-repeat;
+  }
+  .share {
+    background: url(../images/icons_share.png) center no-repeat;
+  }
+  .card {
+    background: url(../images/icons_card.png) center no-repeat;
+  }
+}
+
+
+//main nav
+.main-nav-box {
+  background: $nav-bg;
+  padding: 10px 0;
+}
+.main-nav {
+  li {
+    float: left;
+    width: 20%;
+    border-left: 1px solid $body-bg;
+    border-top: 5px solid transparent;
+    text-align: center;
+    &:last-child {
+      border-right: 1px solid $body-bg;
+    }
+    &:hover {
+      border-top: 5px solid $theme-color;
+    }
+    &.active {
+      border-top: 5px solid $theme-color;
+    }
+    @include tablet {
+      float: none;
+      width: 100%;
+      border-top: 1px solid $border-color;
+      border-right: none;
+      border-left: none;
+      &:hover {
+        border-top: 1px solid $border-color;
+        border-right: none;
+      }
+      &.active {
+        border-top: 1px solid $border-color;
+        border-right: none;
+      }
+    }
+    p {
+      margin: 0;
+    }
+    a {
+      display: block;
+      padding: 20px 0;
+      color: $nav-color;
+      font-weight: bold;
+      &:hover {
+        background: rgba(255,255,255,.1);
+      }
+      @include tablet {
+        padding: 5px 0;
+      }
+    }
+    span {
+      color: $nav-span;
+      font-weight: normal;
+      font-size: 12px;
+    }
+  }
+}
+
+//bunners
+.bunners {
+  padding: 15px 0;
+  .bunner {
+    height: 180px; //height img
+    transition: all linear .1s;
+    display: table;
+    width: 100%;
+    a {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      color: $white-bg;
+      font-size: 22px;
+      transition: all linear .1s;
+      &:hover {
+        font-size: 23px;
+        background: rgba(0,0,0,.5);
+      }
+      &:hover span {
+        background: none;
+      }
+    }
+    span {
+      padding: 8px 12px;
+      background: rgba(0,0,0,.5);
+    }
+  }
+  .sale {
+    background: url(../images/bunners_sale.jpg) center no-repeat $nav-bg;
+    background-size: 100%;
+    &:hover {
+      background-size: 105%;
+    }
+  }
+  .offers {
+    background: url(../images/bunners_offers.jpg) center no-repeat $nav-bg;
+    background-size: 100%;
+    &:hover {
+      background-size: 105%;
+    }
+  }
+  .must-have {
+    background: url(../images/bunners_must_have.jpg) center no-repeat $nav-bg;
+    background-size: 100%;
+    &:hover {
+      background-size: 105%;
+    }
+  }
+}
+
+//main
+main {
+  background: $white-bg;
+  padding: 40px 0;
+  section {
+    padding-bottom: 50px;
+  }
+  h3 {
+    color: $body-bg;
+    margin: 0;
+    a {
+      color: $body-bg;
+    }
+  }
+}
+
+.item-box {
+  margin-top: 20px;
+  border: 1px solid $main-color;
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $border-color;
+  }
+  &:hover .item-viw {
+    border-bottom: 1px solid $border-color;
+  }
+  .icons {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+  .warning {
+    display: table;
+    padding: 20px 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $white-bg;
+    p {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    &.on-sale {
+      background: $body-bg;
+    }
+    &.out-of-stock {
+      background: $warn-bg;
+    }
+  }
+}
+.item-viw {
+  text-align: center;
+  border-bottom: 1px solid $main-color;
+  height: 250px;
+  img {
+    margin: 0 auto;
+    height: 100%;
+  }
+}
+.item-description {
+  p {
+    margin: 0;
+  }
+  a {
+    color: $body-bg;
+  }
+}
+
+//widgets
+.widgets {
+  padding: 50px 0;
+  color: $main-color;
+  h4 {
+    text-transform: uppercase;
+    a {
+      color: $nav-color;
+    }
+  }
+  a {
+    color: $main-color;
+    span {
+      color: $theme-color;
+    }
+  }
+  .flicker-widget {
+    img {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+//footer
+.footer {
+  padding: 40px 0;
+  background: $nav-bg;
+  color: $nav-span;
+  @include tablet {
+    font-size: 12px;
+  }
+  .copyr {
+    @include tablet {
+      text-align: center;
+    }
+  }
+}
+.foot-nav {
+  float: right;
+  @include desktops {
+    float: none;
+  }
+  @include tablet {
+    display: none;
+  }
+  a {
+    color: $nav-span;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  li {
+    float: left;
+    margin-left: 5px;
+  }
+}
